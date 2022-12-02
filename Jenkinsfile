@@ -3,7 +3,7 @@
     stages {
         stage('Build Application') {
             steps {
-                sh 'mvn -f clean package'
+                sh 'mvn -f pom.xml clean package'
             }
             post {
                 success {
@@ -17,7 +17,7 @@
             steps {
                 sh "pwd"
                 sh "ls -a"
-                sh "docker build -t tomcatsamplewebapp:${env.BUILD_ID}"
+                sh "docker build . -t tomcatsamplewebapp:${env.BUILD_ID}"
             }
         }
 
